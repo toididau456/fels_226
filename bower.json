@@ -1,0 +1,22 @@
+{
+  "name": "fels_226",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Bach Trung Kien <toididau456@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/toididau456/fels_226",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1"
+  }
+}
