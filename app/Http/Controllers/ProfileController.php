@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileRequest;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -13,7 +15,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.profile');
     }
 
     /**
@@ -56,7 +58,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        return view('user.profile');
+        return view('user.editProfile');
     }
 
     /**
@@ -66,9 +68,9 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProfileRequest $request, $id)
     {
-        //
+        echo $id;
     }
 
     /**
