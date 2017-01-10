@@ -63,7 +63,9 @@
                                             document.getElementById('logout-form').submit();">
                                             {{ trans('auth.logout') }}
                                         </a>
-
+                                        <a href="{{ action('ProfileController@edit', Auth::id() )}}">
+                                            Profile
+                                        </a>
                                         <form id="logout-form" action="{{ action('Auth\LoginController@logout') }}" 
                                             method="POST" style="display: none;">
                                             {{ csrf_field() }}
