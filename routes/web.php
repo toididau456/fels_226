@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('auth/{social}', 'Auth\LoginController@redirectToProvider');
+Route::get('auth/{social}/callback', 'Auth\LoginController@handleProviderCallback');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('profile', 'ProfileController', ['only' => [
+        'edit',
+        'update'
+    ]]);
