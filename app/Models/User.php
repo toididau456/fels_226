@@ -22,7 +22,7 @@ class User extends Authenticatable
         'password',
         'role',
         'avatar',
-        'remember_token'
+        'remember_token',
         'created_at',
         'updated_at',
         'deleted_at',
