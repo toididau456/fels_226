@@ -27,3 +27,12 @@ Route::resource('profile', 'ProfileController', ['only' => [
     'update',
     'index',
 ]]);
+
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
+    Route::get('/manager', function () {
+        return view('layouts.admin');
+    });
+    Route::resource('cate', 'Admin\CategoryController', ['expert' => [
+        'show',
+    ]]);
+});

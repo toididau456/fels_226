@@ -16,5 +16,7 @@ require('laravel-elixir-vue-2');
 elixir((mix) => {
     mix.sass('app.scss')
        .webpack('app.js')
-       .copy('resources/assets/image', 'public/image');
+       .copy('resources/assets/image', 'public/image')
+       .copy('resources/assets/js/sb-admin-2.js', 'public/js')
+       .copy('resources/assets/css/sb-admin-2.css', 'public/css');
 });
