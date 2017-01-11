@@ -32,7 +32,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/manager', function () {
         return view('layouts.admin');
     });
-    Route::resource('cate', 'Admin\CategoryController', ['expert' => [
+    Route::resource('cate', 'Admin\CategoryController', ['except' => [
+        'show',
+    ]]);
+    Route::resource('user', 'Admin\UserController', ['except' => [
         'show',
     ]]);
 });

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Learn Laravel">
     <meta name="author" content="Bach Trung Kien">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <!-- Jquery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -14,7 +15,9 @@
 
     <!-- Custom CSS -->
     {!! Html::style(elixir('css/sb-admin-2.css')) !!}
-
+    <!-- DataTable CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+    {!! Html::style(elixir('css/dataTables.responsive.css')) !!}
     <!-- Custom Fonts -->
     {!! Html::style(elixir('bower_components/font-awesome/css/font-awesome.min.css')) !!}
     @yield("sc_head")
@@ -44,7 +47,8 @@
                     {{ Auth::user()->name }}<i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#">{{ trans('user.profileUser') }} <i class="fa fa-user fa-fw"></i> </a>
+                    <li><a href="{{ action('ProfileController@edit', Auth::id()) }}">{{ trans('user.profileUser') }} <i class="fa fa-user fa-fw"></i> </a>
+
                     </li>
                     <li class="divider"></li>
                     <li>
@@ -68,22 +72,14 @@
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
-                    <li class="sidebar-search">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                        </div>
-                        <!-- /input-group -->
-                    </li>
-                    <li>
                         <a href="#"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> {{ trans('user.admin.category') }} <span class="fa arrow"></span></a>
+                        <a href="#">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> 
+                            {{ trans('user.admin.category') }} 
+                            <span class="fa arrow"></span>
+                        </a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{ action('Admin\CategoryController@index') }}">{{ trans('user.admin.listCate') }}</a>
@@ -107,13 +103,13 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-users fa-fw"></i>{{ trans('user.admin.user') }}<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-users fa-fw"></i>{{ trans('user.admin.user1') }}<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="">{{ trans('user.admin.listUser') }}</a>
+                                <a href="{{ action('Admin\UserController@index') }}">{{ trans('user.admin.listUser') }}</a>
                             </li>
                             <li>
-                                <a href="">{{ trans('user.admin.addUser') }}</a>
+                                <a href="{{ action('Admin\UserController@create') }}">{{ trans('user.admin.addUser') }}</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -154,8 +150,6 @@
 </div>
 <!-- /#wrapper -->
 
-
-
 <!-- Bootstrap Core JavaScript -->
 {!! Html::script(elixir('bower_components/bootstrap/dist/js/bootstrap.min.js')) !!}
 
@@ -164,15 +158,17 @@
 
 <!-- Custom Theme JavaScript -->
 {!! Html::script(elixir('js/sb-admin-2.js')) !!}
+{!! Html::script(elixir('js/deleteResouce.js')) !!}
 <!-- DataTables JavaScript -->
-
-
-
-
+{!! Html::script(elixir('bower_components/datatables.net/js/jquery.dataTables.min.js')) !!}
+{!! Html::script(elixir('bower_components/datatables.net-responsive/js/dataTables.responsive.min.js')) !!}
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
     $(document).ready(function() {
-        $('.alert-success').delay(5000).slideUp();
+        $('#dataTables-example').DataTable({
+                responsive: true
+        });
+        $('.dataTables_paginate, .dataTables_info, .dataTables_length').hide();
     });
 </script>
 @yield('sc')

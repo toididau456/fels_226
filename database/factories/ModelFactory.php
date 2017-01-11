@@ -45,7 +45,7 @@ $factory->define(App\Models\Word::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\WordChoice::class, function (Faker\Generator $faker) {
     return [
-        'content' => $faker->word. ' ' . $faker->randomDigit(1, 1000),
+        'content' => $faker->word . ' ' . $faker->randomDigit(1, 1000),
         'word_id' => $faker->randomDigit(1, 10),
         'correct' => 0,
     ];

@@ -21,7 +21,7 @@ class CategoryController extends Controller
     public function index()
     {
         $cateResult = Category::paginate(config('common.number_pagination'));
-
+        
         return view('admin.cate.list', ['cateResult' => $cateResult]);
     }
 
@@ -46,7 +46,7 @@ class CategoryController extends Controller
         $cate->name = $request->txtCateName;
         $cate->description = $request->txtDescription;
         $cate->save();
-        
+
         return redirect()->action('Admin\CategoryController@index');
     }
 
@@ -89,7 +89,6 @@ class CategoryController extends Controller
         $cate->save();
 
         return redirect()->action('Admin\CategoryController@index');
-        //sua
     }
 
     /**

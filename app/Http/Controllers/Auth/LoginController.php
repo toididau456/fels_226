@@ -66,6 +66,7 @@ class LoginController extends Controller
             'avatar' => 'default-avatar.png',
             'role' => config('common.auth.role_default'),
             'password'=> uniqid(rand(), true),
+            'social_name' => $social,
         ]);
         
         Auth::login($result);

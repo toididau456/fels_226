@@ -19,7 +19,7 @@ return [
         'word' => 'Word',
         'listWord' => 'List Word',
         'addWord' => 'Add Category',
-        'user' => 'User',
+        'user1' => 'User',
         'addUser' => 'Add User',
         'listUser' => 'List User',
         'reset' => 'Reset',
@@ -30,6 +30,18 @@ return [
             'editHeadTitle' => 'Edit Category',
             'editTittle' => 'Table Edit Category',
             'btnCateEdit' => 'Category Edit',
-        ]
+        ],
+        'adUser' => [
+            'username' => 'Username',
+            'level' => 'Level',
+            'status' => 'Status',
+            'btnUserEdit' => 'Edit User',
+            'editHeadTitle' => ' Edit User',
+            'editTittle' => 'Table Edit User',
+            'listUserHead' => 'List User',
+            'listUserTitle' => 'Table List User',
+            'titleAdd' => 'Add User',
+            'btnUserAdd' => 'Create User',
+        ],
     ]
 ];
