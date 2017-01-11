@@ -59,7 +59,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{ action('ProfileController@index') }}">
-                                            Profile
+                                            {{trans('user.profile')}}
                                         </a>
                                         <a href="{{ action('Auth\LoginController@logout') }}"
                                             onclick="event.preventDefault();

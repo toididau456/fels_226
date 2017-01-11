@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -22,6 +23,7 @@ class User extends Authenticatable
         'password',
         'role',
         'avatar',
+        'social_name',
         'remember_token',
         'created_at',
         'updated_at',
@@ -58,5 +60,10 @@ class User extends Authenticatable
     public function followed()
     {
         return $this->belongsToMany(User::class, 'followers', 'user_follow_id', 'user_id');
+    }
+    public function checkUser(){
+        if (Auth::user()->role == config('common.auth.role_admin'))
+            return true;
+        return false;
     }
 }
