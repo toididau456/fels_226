@@ -1,0 +1,1 @@
+<img src="{{ asset((Auth::user()->avatar == 'default-avatar.png') ? 'image/default-avatar.png' : 'upload/'. Auth::user()->avatar) }}" alt="">

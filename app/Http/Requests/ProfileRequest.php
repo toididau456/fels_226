@@ -25,10 +25,8 @@ class ProfileRequest extends FormRequest
     {
         return [
             'txtName' => 'required|max:50',
-            'txtEmail' => 'required|max:60',
-            'password' => 'min:6',
+            'password' => 'min:6|same:password_confirm',
             'password_confirm' => 'min:6|same:password',
-            'fImage' => 'image'
         ];
     }
 }

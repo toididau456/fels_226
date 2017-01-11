@@ -19,14 +19,11 @@ Route::get('auth/{social}', 'Auth\LoginController@redirectToProvider');
 Route::get('auth/{social}/callback', 'Auth\LoginController@handleProviderCallback');
 
 Auth::routes();
-Route::resource('profile', 'ProfileController', ['only' => [
-        'edit',
-        'update',
-        'index',
-    ]]);
+
 Route::get('/home', 'HomeController@index');
 
 Route::resource('profile', 'ProfileController', ['only' => [
-        'edit',
-        'update'
-    ]]);
+    'edit',
+    'update',
+    'index',
+]]);
