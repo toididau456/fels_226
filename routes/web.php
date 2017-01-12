@@ -38,4 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('user', 'Admin\UserController', ['except' => [
         'show',
     ]]);
+    Route::resource('word', 'Admin\WordController', ['except' => [
+        'show',
+    ]]);
 });

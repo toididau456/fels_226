@@ -2,18 +2,7 @@
 @section('title',  trans('user.admin.cate.editHeadTitle') )
 @section('cate', trans('user.admin.cate.editTittle'))
 @section('content')
-
-    @if(count($errors)>0)
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
+@include('layouts.error-status')
     {!! Form::open([
         'action' => ['Admin\CategoryController@update', $cateResult->id], 
         'method' => 'PUT', 

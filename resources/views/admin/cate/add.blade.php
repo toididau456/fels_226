@@ -2,18 +2,7 @@
 @section('title',  trans('user.admin.cate.addHeadTitle') )
 @section('cate', trans('user.admin.cate.addTittle'))
 @section('content')
-
-    @if(count($errors)>0)
-        <div class="alert alert-danger">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{$error}}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
+@include('layouts.error-status')
     {!! Form::open(['action' => 'Admin\CategoryController@store', 'class' => 'form-horizontal', 'role' => 'form']) !!}
         <div class="form-group">
             {{ Form::label('Category Name') }}

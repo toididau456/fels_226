@@ -114,7 +114,7 @@ class CategoryController extends Controller
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
-            log::eror($e);
+            log::error($e);
             return redirect()->action('Admin\CategoryController@index')->with(['status' => 'Remove Category Fail']);
         }
         

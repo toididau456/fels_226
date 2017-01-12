@@ -5,23 +5,28 @@ $.ajaxSetup({
 });
 
 $(document).ready(function() {
-    $(document).on('click', 'button#delete', function(event) {
-        var url = $(this);
-        $.post(url.attr('data-url'),
-        {
-             _method : 'DELETE',
-             '_token' : $('inputp[name=_token]').val()
-        },
-        function(data, status){
-            url.closest('tr').hide();
-        });
+    $(document).on('click', 'button#delete', function (event) {
+        event.preventDefault();
+        if (confirm('Do you wan to remove this ?')) {
+            var button = $(this);
+            $.post(button.attr('data-url'),
+            {
+                 _method : 'DELETE',
+                '_token' : $('input[name=_token]').val()
+            },
+            function(data, status){
+                button.closest('tr').hide();
+            });
+        };
     });
 //C2
-    $(".form-delete").submit(function(event) {
+    $(".form-delete").submit(function (event) {
         event.preventDefault();
-        var form = $(this);
-        $.post(form.attr('action'), form.serialize(), function(data) {
-            form.closest("tr").hide();
-        });
+        if (confirm('Do you wan to remove this ?')) {
+            var form = $(this);
+            $.post(form.attr('action'), form.serialize(), function(data) {
+                form.closest("tr").hide();
+            });
+        };
     });
 });
