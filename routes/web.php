@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::resource('profile', 'ProfileController', ['only' => [
-        'edit',
-        'update'
-    ]]);
+    'edit',
+    'update',
+    'index',
+]]);

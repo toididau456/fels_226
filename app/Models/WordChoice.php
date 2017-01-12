@@ -9,7 +9,8 @@ class WordChoice extends Model
     protected $fillable = [
         'id',
         'content',
-        'correct'
+        'correct',
+        'word_id',
         'created_at',
         'updated_at',
     ];

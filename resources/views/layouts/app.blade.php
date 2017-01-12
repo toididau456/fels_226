@@ -58,12 +58,14 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="{{ action('ProfileController@index') }}">
+                                            {{trans('user.profile')}}
+                                        </a>
                                         <a href="{{ action('Auth\LoginController@logout') }}"
                                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                             {{ trans('auth.logout') }}
                                         </a>
-
                                         <form id="logout-form" action="{{ action('Auth\LoginController@logout') }}" 
                                             method="POST" style="display: none;">
                                             {{ csrf_field() }}

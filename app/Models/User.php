@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -22,6 +23,7 @@ class User extends Authenticatable
         'password',
         'role',
         'avatar',
+        'social_name',
         'remember_token',
         'created_at',
         'updated_at',
@@ -44,7 +46,7 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
-
+    
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
@@ -58,5 +60,9 @@ class User extends Authenticatable
     public function followed()
     {
         return $this->belongsToMany(User::class, 'followers', 'user_follow_id', 'user_id');
+    }
+    public function isAdmin()
+    {
+        return $this->attributes['role'] == config('common.auth.role_admin');
     }
 }

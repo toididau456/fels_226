@@ -1,0 +1,45 @@
+#edit-profile {
+  .col-md-6 {
+    .input-group {
+      margin-bottom: 20px;
+    }
+  }
+
+}
+
+#profile {
+  margin-left: 0;
+  margin-right: 0;
+  img {
+    width: 100%;
+  }
+  table {
+    tbody {
+      tr:first-child {
+        th:first-child {
+          padding-bottom: 15px;
+        }
+        th:last-child {
+          padding-bottom: 16px;
+          padding-left: 34px;
+        }
+      }
+      tr:nth-child(3) {
+        th {
+          padding: 15px 0;
+        }
+      }
+      tr:last-child {
+        th:last-child {
+          padding: 15px 0;
+        }
+        td {
+          padding-top: 15px;
+          button {
+            width: 110px;
+          }
+        }
+      }
+    }
+  }
+}

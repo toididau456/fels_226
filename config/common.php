@@ -2,6 +2,7 @@
 
 return [
     'auth' => [
-        'role_default' => '1'
+        'role_default' => 2,
+        'role_admin' => 1
     ],
 ];
