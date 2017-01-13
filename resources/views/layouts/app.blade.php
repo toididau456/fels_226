@@ -61,10 +61,10 @@
                                         <a href="{{ action('ProfileController@index') }}">
                                             {{trans('user.profile')}}
                                         </a>
-                                        <a href="{{ action('Auth\LoginController@logout') }}"
+                                       <a href="{{ action('Auth\LoginController@logout') }}"
                                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
-                                            {{ trans('auth.logout') }}
+                                            {{ trans('auth.logout') }} <i class="fa fa-sign-out fa-fw"></i>
                                         </a>
                                         <form id="logout-form" action="{{ action('Auth\LoginController@logout') }}" 
                                             method="POST" style="display: none;">

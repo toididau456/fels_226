@@ -90,15 +90,16 @@ class ProfileController extends Controller
 
             $file = $request->fimage;
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+
             $user->avatar = $fileName;
             $file->move(public_path(config('myApp.upload')), $fileName);
         }
-
+        
         $user->name = $request->txtName;
         $user->save();
+        
         return redirect()->action('ProfileController@index');
     }
-
     /**
      * Remove the specified resource from storage.
      *

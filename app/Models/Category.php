@@ -29,4 +29,14 @@ class Category extends Model
     {
         return $this->hasMany(Lesson::class);
     }
+
+    public function wordChoices()
+    {
+        return $this->hasManyThrough(WordChoice::class, Word::class);
+    }
+
+    public function answer()
+    {
+        return $this->hasManyThrough(Answer::class, Lesson::class);
+    }
 }

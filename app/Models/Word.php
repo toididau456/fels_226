@@ -12,7 +12,7 @@ class Word extends Model
     protected $fillable = [
         'id',
         'content',
-        'category_id'
+        'category_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -37,6 +37,6 @@ class Word extends Model
 
     public function lessons()
     {
-        return $this->belongsToMany(Lesson::class);
+        return $this->belongsToMany(Lesson::class, 'lesson_words');
     }
 }
