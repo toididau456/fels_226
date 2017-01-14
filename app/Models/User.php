@@ -66,10 +66,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(User::class, 'followers', 'user_follow_id', 'user_id');
     }
-
     public function isAdmin()
     {
-        return $this->attributes['role'] == config('common.auth.role_admin');
+        return User::findorFail(Auth::id())->following()->where('user_follow_id', $id)->count();
     }
 
     public function isCurrent()
