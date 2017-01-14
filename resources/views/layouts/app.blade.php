@@ -11,8 +11,9 @@
     <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+     {!! Html::style(elixir('/css/app.css')) !!}
     <!-- Styles -->
-    {!! Html::style(elixir('/css/app.css')) !!}
+    {!! Html::style(elixir('bower_components/jquery/dist/jquery.min.js')) !!}
 </head>
 <body>
     <div id="app">
@@ -36,8 +37,10 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
+                    <ul class="nav navbar-nav nav-left">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Category</a></li>
+                        <li><a href="#">Word List</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -84,5 +87,6 @@
 
     <!-- Scripts -->
 {!! Html::script(elixir('/js/app.js')) !!}
+{!! Html::script(elixir('js/profileAjax.js')) !!}
 </body>
 </html>

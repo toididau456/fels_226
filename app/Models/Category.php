@@ -19,7 +19,6 @@ class Category extends Model
     ];
 
     protected $dates = ['deleted_at'];
-
     public function words()
     {
         return $this->hasMany(Word::class);
