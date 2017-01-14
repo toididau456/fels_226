@@ -1,0 +1,26 @@
+div#app {
+    nav.navbar {
+        margin-bottom: 0;
+        background: #11a3ed;
+        #app-navbar-collapse {
+            ul.navbar-nav {
+                li.active {
+                    a {
+                        background :#242664;
+                    }
+                }
+            }
+        }
+        a {
+            color: white;
+        }
+        ul.dropdown-menu{
+            li {
+                >a {
+                    color: black;
+                }
+            }
+        }
+
+    }
+}

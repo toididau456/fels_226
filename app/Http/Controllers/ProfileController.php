@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
+use Illuminate\Http\Request;
+use App\Helpers\MyHelper;
 use App\Models\User;
+use App\Models\Follower;
+use App\Models\Category;
+use App\Models\Lesson;
+use App\Models\Word;
+use DB;
 use Auth;
 use File;
-use Illuminate\Http\Request;
 use Gate;
 
 class ProfileController extends Controller
@@ -16,11 +22,51 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id = null)
     {
-        return view('user.profile');
-    }
+        $userId = $id ? $id : Auth::id();
 
+        if (request()->ajax()) {
+            return $this->ajaxActivities($userId);
+        }
+
+        $user = User::find($userId);
+
+        return view('user.profile', [
+                'numberWordLearned' => Word::learned($user->id)->count(),
+                'user' => $user,
+            ]);
+    }
+    public function ajaxProfileFollow($id, $type = null)
+    {
+        //Type. 1 get Following, 2. get Follwer. Default get All User
+        $user = User::find($id);
+        switch ($type) {
+            case '1':
+                $user = $user->following->paginate(4);
+                $title = "Following";
+                break;
+            case '2':
+                $user = $user->followers->paginate(4);
+                $title =  "Follower";
+                break;
+            default:
+                $user = User::paginate(4);
+                $title =  "User";
+                break;
+        }
+        
+        return view('pages.ajaxProfile', ['user' => $user, 'title' => $title]);
+    }
+    public function ajaxFollow($id)
+    {
+        Auth::user()->following()->toggle($id);
+    }
+    public function ajaxActivities($id)
+    {
+        $lessons = User::findOrFail($id)->lessons()->paginate(config('common.number_pagination'));
+        return view('pages.ajaxActivities', ['lessons' => $lessons]);
+    }
     /**
      * Show the form for creating a new resource.
      *

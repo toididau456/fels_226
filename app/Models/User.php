@@ -46,7 +46,12 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
-    
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'lessons');
+    }
+
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
@@ -57,12 +62,23 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'followers', 'user_id', 'user_follow_id');
     }
 
-    public function followed()
+    public function followers()
     {
         return $this->belongsToMany(User::class, 'followers', 'user_follow_id', 'user_id');
     }
+
     public function isAdmin()
     {
         return $this->attributes['role'] == config('common.auth.role_admin');
+    }
+
+    public function isCurrent()
+    {
+        return $this->id == \Auth::id();
+    }
+
+    public function checkFollowed($id)
+    {
+        return $this->following()->where('user_follow_id', $id)->count();
     }
 }

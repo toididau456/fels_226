@@ -7,6 +7,10 @@ return [
     'name' => 'Name',
     'status' => 'Status',
     'profileUser' => 'Profile User',
+    'home' => 'Home',
+    'wordList' => 'Word List',
+    'togNav' => 'Toggle Navigation',
+    'titAdmin' => 'Admin',
     'admin' => [
         'id' => 'ID',
         'description' => 'Description',

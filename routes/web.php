@@ -22,11 +22,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('profile', 'ProfileController', ['only' => [
-    'edit',
-    'update',
-    'index',
-]]);
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('profile', 'ProfileController', ['except' => [
+        'show',
+        'index',
+    ]]);
+    Route::get('profile/{id?}', 'ProfileController@index');
+    Route::get('ajaxProfile/{id}/{type?}', 'ProfileController@ajaxProfileFollow');
+    Route::get('ajaxFollow/{id}', 'ProfileController@ajaxFollow');
+    Route::get('ajaxActivities/{id}', 'ProfileController@ajaxActivities');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/manager', function () {

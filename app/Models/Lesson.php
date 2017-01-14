@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Lesson extends Model
 {
@@ -36,5 +37,13 @@ class Lesson extends Model
     public function lessonWord()
     {
         return $this->hasMany(LessonWord::class);
+    }
+    public function rightWords()
+    {
+        return $this->words()
+                    ->join( 'word_choices', 'words.id', '=', 'word_choices.word_id')
+                    ->join('answers', 'word_choices.id', '=', 'answers.word_choice_id')
+                    ->where('correct', config('myApp.correct'))
+                    ->distinct();
     }
 }

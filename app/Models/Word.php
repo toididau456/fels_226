@@ -20,11 +20,6 @@ class Word extends Model
     
     protected $dates = ['deleted_at'];
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
     public function wordChoices()
     {
         return $this->hasMany(WordChoice::class);
@@ -34,7 +29,10 @@ class Word extends Model
     {
         return $this->hasMany(LessonWord::class);
     }
-
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     public function lessons()
     {
         return $this->belongsToMany(Lesson::class, 'lesson_words');
@@ -49,4 +47,25 @@ class Word extends Model
             'id'
         );
     }
+    public function scopeLearned($query, $userId, $categoryId = null, $lessonId = null)
+    {
+        $query->join( 'word_choices', 'words.id', '=', 'word_choices.word_id')
+                     ->join('answers', 'word_choices.id', '=', 'answers.word_choice_id')
+                     ->join('lessons', 'lessons.id', '=', 'answers.lesson_id')
+                     ->where('lessons.user_id', $userId)
+                     ->where('correct', config('myApp.correct'));
+        
+        if ($lessonId) {
+            $query->where('lessons.id', $lessonId);
+        }
+
+        if ($categoryId) {
+            $query->where('lessons.category_id', $categoryid);
+        }
+
+        $query->select('words.*')->distinct();
+
+        return $query;
+    }
+
 }
