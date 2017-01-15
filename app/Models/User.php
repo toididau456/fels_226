@@ -68,7 +68,7 @@ class User extends Authenticatable
     }
     public function isAdmin()
     {
-        return User::findorFail(Auth::id())->following()->where('user_follow_id', $id)->count();
+        return $this->attributes['role'] == config('common.auth.role_admin');
     }
 
     public function isCurrent()

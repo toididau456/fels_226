@@ -31,7 +31,6 @@ class ProfileController extends Controller
         }
 
         $user = User::find($userId);
-
         return view('user.profile', [
                 'numberWordLearned' => Word::learned($user->id)->count(),
                 'user' => $user,

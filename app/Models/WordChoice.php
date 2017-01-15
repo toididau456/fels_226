@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class WordChoice extends Model
 {
+    protected $table='word_choices';
     protected $fillable = [
         'id',
         'content',

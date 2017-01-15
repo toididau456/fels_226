@@ -28,6 +28,13 @@ Route::group(['middleware' => 'auth'], function () {
         'index',
     ]]);
     Route::get('profile/{id?}', 'ProfileController@index');
+    Route::resource('wordlist', 'WordListController', ['except' => [
+        'show',
+    ]]);
+    Route::resource('wordlist', 'WordListController', ['only' => [
+        'show',
+        'index',
+    ]]);
     Route::get('ajaxProfile/{id}/{type?}', 'ProfileController@ajaxProfileFollow');
     Route::get('ajaxFollow/{id}', 'ProfileController@ajaxFollow');
     Route::get('ajaxActivities/{id}', 'ProfileController@ajaxActivities');

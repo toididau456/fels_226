@@ -1,0 +1,37 @@
+div#wordList {
+	margin-top: 25px;
+	padding-top: 50px;
+	padding: 20px;
+	border-radius: 10px;
+    border: 1px solid #e4e4e4;
+    background-color: #FFFFFF;
+	form {
+		margin-left: 42px;
+		margin-bottom: 20px;
+		div#status-radio {
+			div.radio {
+				margin-left: 10px;
+			}
+		}
+		input.btn {
+			border-radius: 10px;
+			margin-left: 20px;
+			width: 100px;
+   			border-radius: 7px;
+		}
+	}
+	div#box-word {
+		margin-left: 60px;
+   		margin-top: 30px;
+   		font-size: 23px;
+		span:first-child {
+
+		}
+		span:last-child {
+			margin-left: 30%;
+		}
+	}
+	.pagination {
+		margin-left: 35%;
+	}
+}

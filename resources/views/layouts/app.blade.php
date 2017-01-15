@@ -38,9 +38,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav nav-left">
-                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Home</a></li>
                         <li><a href="#">Category</a></li>
-                        <li><a href="#">Word List</a></li>
+                        <li class="{{ Request::path() == 'wordlist' ? 'active' : '' }}"><a href="{{ action('WordListController@index') }}">Word List</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

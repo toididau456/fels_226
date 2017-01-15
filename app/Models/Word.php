@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -47,25 +47,30 @@ class Word extends Model
             'id'
         );
     }
-    public function scopeLearned($query, $userId, $categoryId = null, $lessonId = null)
+    public function scopeLearned($query, $categoryId = null)
     {
-        $query->join( 'word_choices', 'words.id', '=', 'word_choices.word_id')
-                     ->join('answers', 'word_choices.id', '=', 'answers.word_choice_id')
-                     ->join('lessons', 'lessons.id', '=', 'answers.lesson_id')
-                     ->where('lessons.user_id', $userId)
-                     ->where('correct', config('myApp.correct'));
-        
-        if ($lessonId) {
-            $query->where('lessons.id', $lessonId);
-        }
+        $query->join('word_choices', 'words.id', '=', 'word_choices.word_id')
+                    ->join('answers', 'word_choices.id', '=', 'answers.word_choice_id')
+                    ->join('lessons', 'lessons.id', '=', 'answers.lesson_id')
+                    ->where('lessons.user_id', Auth::id())
+                    ->where('correct', 1);
 
         if ($categoryId) {
-            $query->where('lessons.category_id', $categoryid);
+            $query->where('lessons.category_id', $categoryId);
         }
 
-        $query->select('words.*')->distinct();
+        $query->select("words.*")->distinct();
 
         return $query;
     }
-
+    public function scopeUnlearned($query)
+    {
+        $query->leftJoin('lesson_words', 'words.id', '=', 'lesson_words.word_id')
+              ->leftJoin('lessons', 'lessons.id', '=', 'lesson_words.word_id' )
+              ->where(function ($query) {
+                    $query->whereNull('lessons.user_id')
+                          ->orWhere('lessons.user_id', '!=', Auth::id());
+              });
+        return $query->select("words.*")->distinct();
+    }
 }
