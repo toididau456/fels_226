@@ -24,10 +24,10 @@
                 <td>{{$v->name}}</td>
                 <td>{{str_limit($v->description, 15)}}</td>
                 <td class="center">
-
                     {!! Form::open([
                        'action' => ['Admin\CategoryController@destroy', $v -> id],
-                        'method' => 'DELETE'
+                       'method' => 'DELETE',
+                       'class' => 'form-delete',
                     ]) !!}
                     {!! Form::submit(trans('user.admin.delete'), ['class' => 'btn btn-sm btn-default']) !!}
                     {!! Form::close() !!}

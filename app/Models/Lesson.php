@@ -33,4 +33,8 @@ class Lesson extends Model
     {
         return $this->belongsToMany(Word::class, 'lesson_words');
     }
+    public function lessonWord()
+    {
+        return $this->hasMany(LessonWord::class); 
+    }
 }
