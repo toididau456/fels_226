@@ -23,6 +23,8 @@ return [
         'addUser' => 'Add User',
         'listUser' => 'List User',
         'reset' => 'Reset',
+        'placeWord' => 'Please Enter Word Name',
+        'placeWordChoice' => 'Please Enter Word Choice',
         'cate' => [
             'addHeadTitle' => 'Insert Category',
             'addTittle' => 'Table Insert Category',
@@ -42,6 +44,14 @@ return [
             'listUserTitle' => 'Table List User',
             'titleAdd' => 'Add User',
             'btnUserAdd' => 'Create User',
+            'listUserTitle' => 'Table List User'
+        ],
+        'adWord' => [
+            'word' => 'Word',
+            'category' => 'Category',
+            'addWordTitle' => 'Add Word',
+            'wordchoice' => 'Word Choice',
+            'editWordTitle' => 'Edit Word',
         ],
     ]
 ];

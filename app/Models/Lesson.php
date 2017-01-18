@@ -35,6 +35,6 @@ class Lesson extends Model
     }
     public function lessonWord()
     {
-        return $this->hasMany(LessonWord::class); 
+        return $this->hasMany(LessonWord::class);
     }
 }

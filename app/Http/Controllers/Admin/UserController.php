@@ -121,7 +121,7 @@ class UserController extends Controller
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();
-            log::eror($e);
+            log::error($e);
         }
 
         return response()->json(['status' => 'ok']);

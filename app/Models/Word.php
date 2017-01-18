@@ -39,4 +39,14 @@ class Word extends Model
     {
         return $this->belongsToMany(Lesson::class, 'lesson_words');
     }
+    public function answers()
+    {
+        return $this->hasManyThrough(
+            Answer::class,
+            WordChoice::class,
+            'word_id',
+            'word_choice_id',
+            'id'
+        );
+    }
 }

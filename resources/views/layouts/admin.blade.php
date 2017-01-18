@@ -12,7 +12,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <!-- Bootstrap Core CSS -->
     {!! Html::style(elixir('bower_components/bootstrap/dist/css/bootstrap.min.css')) !!}
-
     <!-- Custom CSS -->
     {!! Html::style(elixir('css/sb-admin-2.css')) !!}
     <!-- DataTable CSS -->
@@ -26,7 +25,6 @@
 <body>
 
 <div id="wrapper">
-
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
@@ -48,7 +46,6 @@
                 </a>
                 <ul class="dropdown-menu dropdown-user">
                     <li><a href="{{ action('ProfileController@edit', Auth::id()) }}">{{ trans('user.profileUser') }} <i class="fa fa-user fa-fw"></i> </a>
-
                     </li>
                     <li class="divider"></li>
                     <li>
@@ -94,10 +91,10 @@
                         <a href="#"><i class="fa fa-cube fa-fw"></i> {{ trans('user.admin.word') }} <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">{{ trans('user.admin.listWord') }}</a>
+                                <a href="{{ action('Admin\WordController@index') }}">{{ trans('user.admin.listWord') }}</a>
                             </li>
                             <li>
-                                <a href="">{{ trans('user.admin.addWord') }}</a>
+                                <a href="{{ action('Admin\WordController@create') }}">{{ trans('user.admin.addWord') }}</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
@@ -134,9 +131,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                 </div>
-                <div class="col-lg-7" style="padding-bottom:120px">
                     @yield('content')
-                </div>
                 <div class="col-lg-offset-1 col-lg-4">
                     @yield('sub-img')
                 </div>
